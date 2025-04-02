@@ -14,7 +14,8 @@ createRoot(document.getElementById('root')).render(
       background: '#efefef',
       height: '100vh',
     }}>
-      <Head />
+      <Head titulo="Eu sou Head e vim pela PROPS" />
+      <Head titulo="Eu sou um novo HEAD" />
       <Content />
       <Footer />
     </div>
