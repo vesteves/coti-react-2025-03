@@ -1,12 +1,13 @@
 import { useState } from 'react'
+import TaskContainer from '../TaskContainer'
+import { useTasks } from '../../hooks/useTasks'
 // react hooks = gancho
 
 export const Content = () => {
-  const [tasks, setTasks] = useState([])
   const [item, setItem] = useState('')
-  // const [] = useState()
 
-  // cria a funcao q vai receber o evento => cria o elemento que vai acionar o evento => tomo decisao com o evento ativado
+  const { tasks, setTasks, removeTask } = useTasks()
+  // const [] = useState()
 
   const setItemToTask = () => {
     setTasks([
@@ -27,7 +28,6 @@ export const Content = () => {
       borderRadius: '6px',
       textAlign: 'center'
     }}>
-      {item}
       <input
         type="text"
         placeholder="Digite sua tarefa"
@@ -36,6 +36,7 @@ export const Content = () => {
         }}
         value={item}
         onChange={(e) => setItem(e.target.value)}
+        onKeyDown={(e) => e.code === 'Enter' && setItemToTask()}
       />
       <button
         style={{
@@ -44,7 +45,14 @@ export const Content = () => {
         }}
         onClick={() => setItemToTask()}
       >Criar</button>
-      {tasks && tasks.map((task, index) => <div key={index}>{task}</div>)}
+      {tasks && tasks.map((task, index) =>
+        <TaskContainer
+          key={index}
+          task={task}
+          id={index}
+          onRemoveTask={(id) => removeTask(id)}
+        />
+      )}
     </div>
   </div>
 }
