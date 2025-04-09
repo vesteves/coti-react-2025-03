@@ -1,3 +1,6 @@
+import style from './index.module.css'
+// import * as style from './style'
+
 export const Head = ({
   titulo,
   background = 'https://placehold.co/600x400/ff5555/000000'
@@ -5,15 +8,10 @@ export const Head = ({
   // template string ``
   // valor padrao para parametros de funcao
 
-  return <header style={{
-    color: '#fff',
-    textAlign: 'center',
-    padding: '60px 0',
-    backgroundImage: `url(${background})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    marginBottom: '20px',
-  }}>
+  return <header
+    className={style.header}
+    style={{ backgroundImage: `url(${background})` }}
+  >
     <h1>{titulo}</h1>
   </header>
 }

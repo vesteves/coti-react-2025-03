@@ -1,11 +1,9 @@
+import style from './index.module.css'
+
 export const Task = ({ task, id, onRemoveTask }) => {
-  return <div style={{
-    display: "flex",
-    justifyContent: 'space-between'
-  }}>
+  return <div className={style.container}>
     <div>{task}</div>
     <button
-      style={{ color: 'red', fontSize: '20px' }}
       onClick={() => onRemoveTask(id)}
     >X</button>
   </div>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import TaskContainer from '../TaskContainer'
 import { useTasks } from '../../hooks/useTasks'
+import style from './index.module.css'
 // react hooks = gancho
 
 export const Content = () => {
@@ -18,33 +19,16 @@ export const Content = () => {
     setItem('')
   }
 
-  return <div style={{
-    display: 'flex',
-    justifyContent: 'center',
-  }}>
-    <div style={{
-      background: 'white',
-      width: '600px',
-      borderRadius: '6px',
-      textAlign: 'center'
-    }}>
+  return <div className={style.container}>
+    <div className={style.content}>
       <input
         type="text"
         placeholder="Digite sua tarefa"
-        style={{
-          marginRight: '10px'
-        }}
         value={item}
         onChange={(e) => setItem(e.target.value)}
         onKeyDown={(e) => e.code === 'Enter' && setItemToTask()}
       />
-      <button
-        style={{
-          color: 'white',
-          background: 'gray'
-        }}
-        onClick={() => setItemToTask()}
-      >Criar</button>
+      <button onClick={() => setItemToTask()}>Criar</button>
       {tasks && tasks.map((task, index) =>
         <TaskContainer
           key={index}
