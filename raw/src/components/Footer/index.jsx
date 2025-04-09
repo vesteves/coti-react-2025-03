@@ -1,8 +1,8 @@
-import style from './index.module.css'
+import * as S from './style'
 
 // JS-to-CSS
 const Footer = () => {
-  return <footer className={style.footer}>Projeto by Coti Informática</footer>
+  return <S.FooterContainer>Projeto by Coti Informática</S.FooterContainer>
 }
 
 export default Footer
