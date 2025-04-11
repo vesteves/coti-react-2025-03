@@ -1,12 +1,13 @@
-import style from './index.module.css'
+// import style from './index.module.css'
+import * as S from './style'
 
 export const Task = ({ task, id, onRemoveTask }) => {
-  return <div className={style.container}>
-    <div>{task}</div>
-    <button
+  return <S.TaskContainer>
+    <S.TaskName color={id % 2 === 0 ? 'goldenrod' : 'blue'}>{task}</S.TaskName>
+    <S.RemoveTaskButton
       onClick={() => onRemoveTask(id)}
-    >X</button>
-  </div>
+    >X</S.RemoveTaskButton>
+  </S.TaskContainer>
 }
 
 export default Task
