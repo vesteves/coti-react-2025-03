@@ -8,28 +8,29 @@ import * as S from './style'
 export const Content = () => {
   const [item, setItem] = useState('')
 
-  const { tasks, setTasks, removeTask } = useTasks()
+  const {
+    tasks,
+    removeTask,
+    setItemToTask,
+    storedTasksToJson,
+    setTasks,
+  } = useTasks()
   // const [] = useState()
 
+  /*
+   * este useEffect é responsável em rodar instruções no momento que
+   * o componentente é montado
+  */
   useEffect(() => {
-    const result = localStorage.getItem('tasksStored')
-    setTasks(JSON.parse(result))
-  }, [])
+    setTasks(storedTasksToJson())
+  }, [setTasks])
 
-  useEffect(() => {
-    console.log('tasks', tasks)
-  }, [tasks])
-
-  const setItemToTask = () => {
-    if (!item.trim()) return
-
-    setTasks([
-      ...tasks,
-      item
-    ])
-
-    setItem('')
-  }
+  /*
+   * este useEffect é responsável em observar o estado tasks
+  */
+  // useEffect(() => {
+  //   console.log('tasks', tasks)
+  // }, [tasks])
 
   return <S.ContentContainer>
     <S.ContentForm>
@@ -38,9 +39,9 @@ export const Content = () => {
         placeholder="Digite sua tarefa"
         value={item}
         onChange={(e) => setItem(e.target.value)}
-        onKeyDown={(e) => e.code === 'Enter' && setItemToTask()}
+        onKeyDown={(e) => e.code === 'Enter' && setItemToTask(item, setItem)}
       />
-      <S.NewTaskButton onClick={() => setItemToTask()}>Criar</S.NewTaskButton>
+      <S.NewTaskButton onClick={() => setItemToTask(item, setItem)}>Criar</S.NewTaskButton>
 
       {tasks && tasks.map((task, index) =>
         <TaskContainer
