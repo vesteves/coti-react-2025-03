@@ -34,14 +34,16 @@ export const Content = () => {
 
   return <S.ContentContainer>
     <S.ContentForm>
-      <S.TaskName
-        type="text"
-        placeholder="Digite sua tarefa"
-        value={item}
-        onChange={(e) => setItem(e.target.value)}
-        onKeyDown={(e) => e.code === 'Enter' && setItemToTask(item, setItem)}
-      />
-      <S.NewTaskButton onClick={() => setItemToTask(item, setItem)}>Criar</S.NewTaskButton>
+      <S.Form>
+        <S.TaskName
+          type="text"
+          placeholder="Digite sua tarefa"
+          value={item}
+          onChange={(e) => setItem(e.target.value)}
+          onKeyDown={(e) => e.code === 'Enter' && setItemToTask(item, setItem)}
+        />
+        <S.NewTaskButton onClick={() => setItemToTask(item, setItem)}>Criar</S.NewTaskButton>
+      </S.Form>
 
       {tasks && tasks.map((task, index) =>
         <TaskContainer

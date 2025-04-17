@@ -1,22 +1,40 @@
 import styled from '@emotion/styled'
 
 export const ContentContainer = styled.div`
-  display: flex;
-  justify-content: center;
+    background-color: rgb(255, 255, 255);
+    max-width: 600px;
+    box-shadow: rgb(221, 221, 221) 5px 5px 10px;
+    margin: 40px auto;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 10px;
 `
 
-export const ContentForm = styled.div`
-  background: white;
-  width: 600px;
-  border-radius: 6px;
-  text-align: center;
+export const Form = styled.div`
+  display: flex;
+  justify-content: space-between;
+  column-gap: 10px;
 `
+
+export const ContentForm = styled.div``
+
 export const TaskName = styled.input`
-  margin-right: 10px;
+  flex-grow: 1;
+  height: 54px;
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid rgb(204, 204, 204);
+  font-size: 18px;
 `
 
 export const NewTaskButton = styled.button`
-  color: white;
-  background: gray;
+  width: 105px;
+  background-color: rgb(0, 29, 41);
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
 `
 

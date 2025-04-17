@@ -1,26 +1,30 @@
 import styled from '@emotion/styled'
 
 export const HeaderContainer = styled.header`
-  color: #fff;
-  text-align: center;
-  padding: 60px 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-bottom: 20px;
   background-image: url(${props => props.imageUrl});
+  height: 200px;
+  text-align: center;
+  color: #fff;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 // OU
 
 // export const HeaderContainer = styled.header({
-//   color: '#fff',
+//   height: '200px',
 //   textAlign: 'center',
-//   padding: '60px 0',
-//   backgroundRepeat: 'no-repeat',
+//   color: '#fff',
 //   backgroundSize: 'cover',
-//   marginBottom: '20px',
+//   display: 'flex',
+//   alignItems: 'center',
+//   justifyContent: 'center',
 // }, props => ({
 //   backgroundImage: `url(${props.imageUrl})`,
 // }))
 
-export const Title = styled.h1``
+export const Title = styled.h1`
+  font-size: 48px;
+`
