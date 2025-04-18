@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import TodoPage from '../pages/TodoPage'
 import HomePage from '../pages/HomePage'
+import ZipcodePage from "../pages/ZipcodePage";
 
 const routes = createBrowserRouter([
   {
@@ -9,8 +10,24 @@ const routes = createBrowserRouter([
   },
   {
     path: '/todo-list',
-    element: <TodoPage />
+    element: <TodoPage />,
+    children: [
+      {
+        path: 'json',
+        element: <TodoPage />,
+      }
+    ]
   },
+  {
+    path: '/zipcode',
+    element: <ZipcodePage />,
+    children: [
+      {
+        path: ':cep',
+        element: <ZipcodePage />,
+      }
+    ]
+  }
 ])
 
 export default routes
