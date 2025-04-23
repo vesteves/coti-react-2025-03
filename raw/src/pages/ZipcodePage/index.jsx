@@ -6,9 +6,9 @@ import { useParams } from "react-router-dom";
 export const ZipcodePage = () => {
   const params = useParams()
 
-  const [ zipcode, setZipcode ] = useState(params.cep ? params.cep : '')
+  const [zipcode, setZipcode] = useState(params.cep ? params.cep : '')
 
-  const [ address, setAddress ] = useState({
+  const [address, setAddress] = useState({
     logradouro: '',
     bairro: '',
     estado: ''
@@ -40,9 +40,9 @@ export const ZipcodePage = () => {
           'Content-Type': 'application/json'
         }
       })
-  
+
       const data = await response.json()
-  
+
       return data
     } catch {
       return {
@@ -54,7 +54,7 @@ export const ZipcodePage = () => {
   }, [zipcode])
 
   const onMount = useCallback(async () => {
-    if(params.cep) {
+    if (params.cep) {
       setZipcode(params.cep)
 
       setAddress(await fetchViacep())
@@ -74,62 +74,62 @@ export const ZipcodePage = () => {
 
   return <div>
     <Head titulo="ZipCode" background="https://reacttodo-coti.vercel.app/assets/banner-DVDpP2rH.jpg" />
-      <div
+    <div
+      style={{
+        padding: '20px',
+        display: 'flex',
+        justifyContent: 'center'
+      }}
+    >
+      <form
         style={{
-          padding: '20px',
           display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
+          width: '400px',
           justifyContent: 'center'
         }}
+        onSubmit={(e) => onSubmit(e)}
       >
-        <form
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '10px',
-            width: '400px',
-            justifyContent: 'center'
-          }}
-          onSubmit={(e) => onSubmit(e)}
-        >
-          <label>CEP</label>
-          <input  
-            name="zipcode"
-            type="text"
-            placeholder="Coloque aqui seu CEP"
-            required
-            value={zipcode}
-            onInput={(e) => setZipcode(e.target.value)}
-          />
+        <label>CEP</label>
+        <input
+          name="zipcode"
+          type="text"
+          placeholder="Coloque aqui seu CEP"
+          required
+          value={zipcode}
+          onInput={(e) => setZipcode(e.target.value)}
+        />
 
-          <label>Logradouro</label>
-          <input
-            name="logradouro"
-            type="text"
-            value={address.logradouro}
-            disabled
-          />
+        <label>Logradouro</label>
+        <input
+          name="logradouro"
+          type="text"
+          value={address.logradouro}
+          disabled
+        />
 
-          <label>Bairro</label>
-          <input
-            name="bairro"
-            type="text"
-            value={address.bairro}
-            disabled
-          />
+        <label>Bairro</label>
+        <input
+          name="bairro"
+          type="text"
+          value={address.bairro}
+          disabled
+        />
 
-          <label>Estado</label>
-          <input
-            name="estado"
-            type="text"
-            value={address.estado}
-            disabled
-          />
+        <label>Estado</label>
+        <input
+          name="estado"
+          type="text"
+          value={address.estado}
+          disabled
+        />
 
-          <button type="submit">Submeter</button>
-        </form>
-        {/* input */}
-        {/* cep + logradouro */}
-      </div>
+        <button type="submit">Submeter</button>
+      </form>
+      {/* input */}
+      {/* cep + logradouro */}
+    </div>
     <Footer />
   </div>
 }
